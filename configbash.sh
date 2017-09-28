@@ -45,12 +45,12 @@ while read -r configline ; do
 done<bash.config
 
 
-echo "Would you like to add DISPLAY=localhost:0.0 (N to skip)?"; 
+echo "Would you like to add DISPLAY=localhost:0.0 (n to skip)?"; 
 read yn
 [ "$yn" != "n" ] && cat bashdisplay.config >> $TARGETFILE
 
 
-echo "Would you like to add custom bash promt (N to skip)?"; 
+echo "Would you like to add custom bash promt (n to skip)?"; 
 read yn
 [ "$yn" != "n" ] && cat bashpromt.config >> $TARGETFILE
 
