@@ -3,7 +3,7 @@
 TARGETFILE=$HOME/.vimrc
 
 # create file if not exist
-[ ! -f $TARGETFILE ] && touch $TARGETFILE || echo ".vimrc Found"
+[ ! -f $TARGETFILE ] && touch $TARGETFILE || echo "$TARGETFILE Found"
 
 
 # read data from the file
