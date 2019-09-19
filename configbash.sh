@@ -55,4 +55,5 @@ read yn
 [ "$yn" != "n" ] && cat bashpromt.config >> $TARGETFILE
 
 # execute bashrc
-exec bash
+# exec bash
+source ~/.bashrc
