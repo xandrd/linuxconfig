@@ -60,3 +60,4 @@ source ~/.bashrc
 # exec bash
 # or source bash?
 # or reset ?
+# reset # no. source
