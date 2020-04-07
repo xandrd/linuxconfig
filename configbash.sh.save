@@ -26,33 +26,28 @@ while read -r configline ; do
                 # this is variable string in the config, pars the variable
                 VAR=${confitline#export} # remove word export
                 VAR=${VAR%%=*} # remove everything after
-                if [ -z "${!VAR}" ]; then 
+                if [ -z ${VAR+x} ]; then 
                         #VAR is unset, add to the file
                 		echo $configline >> $TARGETFILE
                 else 
-                        echo "$VAR is set to '${!VAR}', would you like to add '$configline' (n to skip)?"; 
-                        read yn
-                        if [ $yn == "n" ]; then
-                                continue
-                        else
-        		                echo $configline >> $TARGETFILEi
-                        fi
+                        echo "$VAR is set to '$VAR', would you like to add '$configline' (Y/N)?"; 
+echo "Do you wish to install this program?"
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes ) make install; break;;
+        No ) exit;;
+    esac
+done
+
                 fi
-        else # this is setting, not a variable        		
+        else # this is setting, not a variable
         		echo $configline >> $TARGETFILE
         fi
+
+
 	fi
+
 done<bash.config
 
-
-echo "Would you like to add DISPLAY=localhost:0.0 (n to skip)?"; 
-read yn
-[ "$yn" != "n" ] && cat bashdisplay.config >> $TARGETFILE
-
-
-echo "Would you like to add custom bash promt (n to skip)?"; 
-read yn
-[ "$yn" != "n" ] && cat bashpromt.config >> $TARGETFILE
-
-# add variables from bashrc
-source bash
+# execute bashrc
+source $TARGETFILE
