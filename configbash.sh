@@ -55,4 +55,8 @@ read yn
 [ "$yn" != "n" ] && cat bashpromt.config >> $TARGETFILE
 
 # add variables from bashrc
-source bash
+source ~/.bashrc
+# execute bashrc
+# exec bash
+# or source bash?
+# or reset ?
