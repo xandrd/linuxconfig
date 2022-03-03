@@ -49,6 +49,9 @@ echo "Would you like to add DISPLAY=localhost:0.0 (n to skip)?";
 read yn
 [ "$yn" != "n" ] && cat bashdisplay.config >> $TARGETFILE
 
+echo "Download bash_git to enable __git_ps1 (n to skip)?";
+read yn
+[ "$yn" != "n" ] && curl -L https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh > ~/.bash_git
 
 echo "Would you like to add custom bash promt (n to skip)?"; 
 read yn
